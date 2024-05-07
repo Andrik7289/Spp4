@@ -7,7 +7,6 @@ public class Program
         TaskQueue taskQueue = new TaskQueue(3);
 
         int tasksCount = 10;
-        int currentTaskNumber = 0;
 
         Action[] actions = new Action[tasksCount];
 
@@ -22,8 +21,6 @@ public class Program
                 {
                     sum += j;
                 }
-
-                currentTaskNumber++;
                 Console.WriteLine($"Sum from 1 to {numberToSum} = {sum}");
             };
         }

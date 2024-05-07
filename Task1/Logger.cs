@@ -18,7 +18,6 @@ public class Logger
         running = true;
 
         Thread thread = new Thread(FlushThread);
-        thread.IsBackground = true;
         thread.Start();
     }
 
@@ -31,7 +30,7 @@ public class Logger
         }
     }
 
-    private void FlushBuffer(bool isTimeToWrite)
+    private void FlushBuffer(bool isTimeElapsed)
     {
         lock (lockObject)
         {
@@ -43,7 +42,7 @@ public class Logger
             using (StreamWriter writer = File.AppendText(filePath))
             {
                 string prefix = "";
-                if (isTimeToWrite) prefix = "Time to write, ";
+                if (isTimeElapsed) prefix = "Time elapsed, ";
 
                 foreach (string message in messagesToWrite)
                 {
